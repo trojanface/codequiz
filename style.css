@@ -14,6 +14,23 @@ body {
     align-content: center;
 }
 #startScreen {
-    /*display:flex; Turned off for testing purposes*/
+    display:flex; Turned off for testing purposes
+
+}
+
+#quizScreen {
     display: none;
+    background: rgb(65, 65, 121);
+    background: linear-gradient(169deg, rgb(35,36,66) , rgb(65, 65, 121) );
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+#quizAnswers{
+    background: rgb(46, 46, 46);
+    padding-top: 5%;
+}
+
+#quizAnswers .btn {
+    margin : 1%;
 }
