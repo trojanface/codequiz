@@ -1,0 +1,11 @@
+Start Button
+    Begins a countdown
+    Loads first question
+    Loads an array of answer buttons to the question.
+        Answer buttons are compared to the correct answer to the question.
+        Result subtracts time from the timer.
+        Records if it was right or wrong.
+        Loads the next question.
+    Last question completed will load a modal prompting user name and displaying score.
+        Upon submission this is added to a leaderboard displayed to the user.
+        Exit button is provided which takes them back to the home screen.
