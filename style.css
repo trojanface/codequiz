@@ -47,3 +47,11 @@ body {
 #highScore p {
     color:white;
 }
+
+.modal-content {
+    padding: 5%;
+}
+
+.modal-content form {
+    color:black;
+}

@@ -51,11 +51,17 @@ var quizA2 = document.getElementById("quizAnswer2");
 var quizA3 = document.getElementById("quizAnswer3");
 var quizA4 = document.getElementById("quizAnswer4");
 var exitBtn = document.getElementById("exitButton");
+var subBtn = document.getElementById("subBtn");
 //Event Listeners
 
 var correctNum = 0;
 var incorrectNum = 0;
 var timer = 0;
+
+subBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    $('.modalElement').modal('toggle');
+})
 
 exitBtn.addEventListener("click", () => {
     scoreScreen.style.display = "none";
@@ -77,46 +83,38 @@ function gettinQuizzy(questionNo) {
 }
 
 quizA1.addEventListener("click", () => {
-    if (correctAnswers[currentQuestion] == 0) {
-        correctNum++;
-    } else {
-        incorrectNum++;
-    }
-    questionCycle();
+questionAnswered(0);
 });
 
 quizA2.addEventListener("click", () => {
-    if (correctAnswers[currentQuestion] == 1) {
-        correctNum++;
-    } else {
-        incorrectNum++;
-    }
-    questionCycle();
-});
+        questionAnswered(1);
+        });
 
 quizA3.addEventListener("click", () => {
-    if (correctAnswers[currentQuestion] == 2) {
-        correctNum++;
-    } else {
-        incorrectNum++;
-    }
-    questionCycle();
-});
+    questionAnswered(2);
+    });
 
 quizA4.addEventListener("click", () => {
-    if (correctAnswers[currentQuestion] == 3) {
+    questionAnswered(3);
+});
+
+function questionAnswered (buttonNumber) {
+    if (correctAnswers[currentQuestion] == buttonNumber) {
         correctNum++;
     } else {
         incorrectNum++;
     }
     questionCycle();
-});
+}
+
+
 
 function questionCycle () {
     if (currentQuestion < correctAnswers.length - 1) {
     currentQuestion++;
     gettinQuizzy(currentQuestion);
     } else {
+        $('.modalElement').modal('toggle');
         console.log("display score");
         quizScreen.style.display = "none";
         scoreScreen.style.display = "block";
