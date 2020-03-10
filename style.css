@@ -29,6 +29,8 @@ body {
 #quizAnswers{
     background: rgb(46, 46, 46);
     padding-top: 5%;
+    border: 6px solid rgb(41, 41, 41);
+    border-radius: 3px;
 }
 
 #quizAnswers .btn {
