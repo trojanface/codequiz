@@ -1,7 +1,4 @@
 //Variables
-var startButton = document.getElementById("startButton");
-var startScreen = document.getElementById("startScreen");
-var quizScreen = document.getElementById("quizScreen");
 var quizQuestions = ["What is javascript?", "What is the proper syntax for an arrow function?", "What is a prompt box?", 
 "What does the keyword 'this' mean in javascript?", "What symbol should be used for comments in javascript?", 
 "What are the looping structures in javascript?", "When do you use escape characters?", 
@@ -11,7 +8,7 @@ var quizAnswers = [
 "An object-oriented programming language.", "A descendant of java.",
 "A combination of html & css.", "A markup language.",
 
-"() => { };", "function -> { }"
+"() => { };", "function -> { }",
 "event arrowFunction { }", "(argument), => { };",
 
 "An input box that removes control from the user.", "An input box.",
@@ -40,11 +37,28 @@ var quizAnswers = [
 
 ];
 var correctAnswers = [0,0,0,0,0,0,0,0,0,0,0];
+var currentQuestion = 0;
 
-
+var startButton = document.getElementById("startButton");
+var startScreen = document.getElementById("startScreen");
+var quizScreen = document.getElementById("quizScreen");
+var quizDisplay = document.getElementById("quizQuestion");
+var quizA1 = document.getElementById("quizAnswer1");
+var quizA2 = document.getElementById("quizAnswer2");
+var quizA3 = document.getElementById("quizAnswer3");
+var quizA4 = document.getElementById("quizAnswer4");
 //Event Listeners
 
 startButton.addEventListener("click", () => {
     startScreen.style.display = "none";
     quizScreen.style.display = "flex";
+    gettinQuizzy(0);
 });
+
+function gettinQuizzy (questionNo) {
+    quizDisplay.innerText = quizQuestions[questionNo];
+    quizA1.innerText = quizAnswers[questionNo*4];
+    quizA2.innerText = quizAnswers[questionNo*4+1];
+    quizA3.innerText = quizAnswers[questionNo*4+2];
+    quizA4.innerText = quizAnswers[questionNo*4+3];
+}
