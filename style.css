@@ -5,7 +5,7 @@ body {
     background-size: 100vw 100vh;
 }
 .titleText {
-    margin-top: 40vh;
+    margin-top: 30vh;
     color: rgb(0, 255, 255);
     margin-bottom: 70px;
 }
@@ -14,8 +14,7 @@ body {
     align-content: center;
 }
 #startScreen {
-    display:flex; Turned off for testing purposes
-
+    display:flex; /*Turned off for testing purposes*/
 }
 
 #quizScreen {
@@ -35,4 +34,16 @@ body {
 
 #quizAnswers .btn {
     margin : 1%;
+}
+
+#highScore {
+    display: none;
+}
+
+#highScore h1 {
+    color:white;
+}
+
+#highScore p {
+    color:white;
 }

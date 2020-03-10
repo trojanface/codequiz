@@ -38,22 +38,29 @@ var quizAnswers = [
     "Renames an array.", "Adds an element in the middle of an array."
 
 ];
-var correctAnswers = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+var correctAnswers = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 var currentQuestion = 0;
 
 var startButton = document.getElementById("startButton");
 var startScreen = document.getElementById("startScreen");
 var quizScreen = document.getElementById("quizScreen");
 var quizDisplay = document.getElementById("quizQuestion");
+var scoreScreen = document.getElementById("highScore");
 var quizA1 = document.getElementById("quizAnswer1");
 var quizA2 = document.getElementById("quizAnswer2");
 var quizA3 = document.getElementById("quizAnswer3");
 var quizA4 = document.getElementById("quizAnswer4");
+var exitBtn = document.getElementById("exitButton");
 //Event Listeners
 
 var correctNum = 0;
 var incorrectNum = 0;
 var timer = 0;
+
+exitBtn.addEventListener("click", () => {
+    scoreScreen.style.display = "none";
+    startScreen.style.display = "flex";
+})
 
 startButton.addEventListener("click", () => {
     startScreen.style.display = "none";
@@ -75,8 +82,7 @@ quizA1.addEventListener("click", () => {
     } else {
         incorrectNum++;
     }
-    currentQuestion++;
-    gettinQuizzy(currentQuestion);
+    questionCycle();
 });
 
 quizA2.addEventListener("click", () => {
@@ -85,8 +91,7 @@ quizA2.addEventListener("click", () => {
     } else {
         incorrectNum++;
     }
-    currentQuestion++;
-    gettinQuizzy(currentQuestion);
+    questionCycle();
 });
 
 quizA3.addEventListener("click", () => {
@@ -95,8 +100,7 @@ quizA3.addEventListener("click", () => {
     } else {
         incorrectNum++;
     }
-    currentQuestion++;
-    gettinQuizzy(currentQuestion);
+    questionCycle();
 });
 
 quizA4.addEventListener("click", () => {
@@ -105,6 +109,17 @@ quizA4.addEventListener("click", () => {
     } else {
         incorrectNum++;
     }
+    questionCycle();
+});
+
+function questionCycle () {
+    if (currentQuestion < correctAnswers.length - 1) {
     currentQuestion++;
     gettinQuizzy(currentQuestion);
-});
+    } else {
+        console.log("display score");
+        quizScreen.style.display = "none";
+        scoreScreen.style.display = "block";
+    }
+}
+
