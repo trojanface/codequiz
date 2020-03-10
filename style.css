@@ -55,3 +55,8 @@ body {
 .modal-content form {
     color:black;
 }
+
+#timerText {
+    color:white;
+    text-align: right;
+}
