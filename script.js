@@ -53,28 +53,45 @@ var quizA4 = document.getElementById("quizAnswer4");
 var exitBtn = document.getElementById("exitButton");
 var subBtn = document.getElementById("subBtn");
 var timerElement = document.getElementById("timerText");
+var scoreText = document.getElementById("scoreText");
+var playerName = document.getElementById("playerName");
+var listElement = document.getElementById("scoreList");
 //Event Listeners
-
 var correctNum = 0;
 var incorrectNum = 0;
 var timer = 0;
+var score = 0;
+var savedNames = [];
+var savedScores = [];
 
 subBtn.addEventListener("click", (event) => {
     event.preventDefault();
     $('.modalElement').modal('toggle');
-})
+    savedNames.push(playerName.value);
+    savedScores.push(score);
+    localStorage.setItem("Names", savedNames);
+    localStorage.setItem("Highscores", savedScores);
+    scoreDisplay();
+});
 
 exitBtn.addEventListener("click", () => {
     scoreScreen.style.display = "none";
     startScreen.style.display = "flex";
-})
+});
 
 startButton.addEventListener("click", () => {
+    savedNames = new Array;
+    savedScores = new Array;
+    if (savedScores.length != 0) {
+    savedScores = localStorage.getItem("Highscores").split(",");
+    savedNames = localStorage.getItem("Names").split(",");
+    }
     startScreen.style.display = "none";
     quizScreen.style.display = "flex";
     timer = 60;
-   var timerFunc = setInterval(function () {
-        if (timer > 0) {
+    currentQuestion = 0;
+    var timerFunc = setInterval(function () {
+        if (timer > 0 && (currentQuestion < correctAnswers.length - 1)) {
             timer--;
             timerElement.innerText = timer;
         } else {
@@ -85,6 +102,20 @@ startButton.addEventListener("click", () => {
     }, 1000);
     gettinQuizzy(0);
 });
+
+function scoreDisplay() {
+    if (savedNames != null) {
+        console.log("it is not null");
+        for (var i = 0; i < savedNames.length; i++) {
+            console.log("li");
+            var itemVar = document.createElement("li");
+            itemVar.innerText = savedNames[i] + " : " + savedScores[i];
+            listElement.appendChild(itemVar);
+        }
+    } else {
+        console.log("it is null");
+    }
+}
 
 function gettinQuizzy(questionNo) {
     quizDisplay.innerText = quizQuestions[questionNo];
@@ -125,6 +156,11 @@ function questionCycle() {
         currentQuestion++;
         gettinQuizzy(currentQuestion);
     } else {
+        score = correctNum + timer;
+        if (score < 0) {
+            score = 0;
+        }
+        scoreText.innerText = "Your Score - " + score;
         $('.modalElement').modal('toggle');
         console.log("display score");
         quizScreen.style.display = "none";
