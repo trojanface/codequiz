@@ -1,23 +1,23 @@
-body {
+body { /*styles the body to have a gradient from top left to bottom right*/
     background: rgb(20,21,43);
     background: linear-gradient(169deg, rgb(1, 0, 20) , rgb(20, 14, 43) );
     background-repeat: no-repeat;
     background-size: 100vw 100vh;
 }
-.titleText {
+.titleText {/*this is the heading text of each screen as well as the quiz questions*/
     margin-top: 30vh;
     color: rgb(0, 255, 255);
     margin-bottom: 70px;
 }
-.centeredContent {
+.centeredContent {/*this is a generic class used on any content I need aligned in the middle*/
     text-align: center;
     align-content: center;
 }
-#startScreen {
-    display:flex; /*Turned off for testing purposes*/
+#startScreen {/*this is the initial state of the start screen*/
+    display:flex; 
 }
 
-#quizScreen {
+#quizScreen {/*this is the initial state of the quiz screen as well as some basoic styling of the background*/
     display: none;
     background: rgb(65, 65, 121);
     background: linear-gradient(169deg, rgb(35,36,66) , rgb(65, 65, 121) );
@@ -25,42 +25,42 @@ body {
     height: 100vh;
 }
 
-#quizAnswers{
+#quizAnswers{/*this provides a box around the quiz answers to stylistically seperate it from the quiz questions*/
     background: rgb(46, 46, 46);
     padding-top: 5%;
     border: 6px solid rgb(41, 41, 41);
     border-radius: 3px;
 }
 
-#quizAnswers .btn {
+#quizAnswers .btn { /*creates some space around the answer buttons*/
     margin : 1%;
 }
 
-#highScore {
+#highScore {/*the initial state of the highscore screen*/
     display: none;
 }
 
-#highScore h1 {
+#highScore h1 {/*color of any h1 elements on the highscore screen*/
     color:white;
 }
 
-#highScore p {
+#highScore p {/*color of any p elements on the highscore screen*/
     color:white;
 }
 
-.modal-content {
+.modal-content {/*creates some padding around the edges of the modal and it's interior content*/
     padding: 5%;
 }
 
-.modal-content form {
+.modal-content form {/*ensures the text in the form is black as its on a white background*/
     color:black;
 }
 
-#timerText {
+#timerText {/*styles the countdown text*/
     color:white;
     text-align: right;
 }
 
-li {
+li {/*styles the list of highscores so they're visible on the dark background*/
     color:white;
 }

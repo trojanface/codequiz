@@ -5,100 +5,127 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Quiz</title>
+    <!--Link to bootstrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!--Link to this page's stylesheet-->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <section>
+        <!--Overarching section.-->
         <div class="container">
-            <div class="row" id="startScreen">
-                <div class="offset-md-3"></div>
-                <div class="col-md-6">
-                    <h1 class="titleText centeredContent">Test Yourself!</h1>
-                    <div class="centeredContent">
-                        <button type="button" id="startButton" class="btn btn-primary btn-md">Start</button>
-                    </div>
-                </div>
-            </div>
-            <div class="row" id="quizScreen">
-                <div class="offset-md-3"></div>
-                <div class="col-md-6">
-                    <h1 id="quizQuestion" class="titleText centeredContent">Question goes here!</h1>
 
-                </div>
-                <div class="col-md-3">
-                    <h1 id="timerText">60</h1>
-                </div>
-                <div id="quizAnswers" class="col-md-12">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <button type="button" id="quizAnswer1"
-                                class="btn btn-primary btn-lg btn-block">Answer1</button>
-                        </div>
-                        <div class="col-md-6">
-                            <button type="button" id="quizAnswer2"
-                                class="btn btn-primary btn-lg btn-block">Answer2</button>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <button type="button" id="quizAnswer3"
-                                class="btn btn-primary btn-lg btn-block">Answer3</button>
-                        </div>
-                        <div class="col-md-6">
-                            <button type="button" id="quizAnswer4"
-                                class="btn btn-primary btn-lg btn-block">Answer4</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="highScore">
-
-
-                <div class="modalElement modal fade bd-example-modal-sm" data-backdrop="static" data-keyboard="false"
-                    tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-sm">
-                        <div class="modal-content">
-                            <form>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Your Name</label>
-                                    <input type="text" class="form-control" id="playerName" placeholder="Enter name">
-                                    <h5 id="scoreText">Your Score - 123</h5>
-                                </div>
-                                <button type="submit" id="subBtn" class="btn btn-primary">Submit</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
+            <section>
+                <!--This is the start screen (Note: All other screens start as display:none)-->
+                <div class="row" id="startScreen">
                     <div class="offset-md-3"></div>
                     <div class="col-md-6">
-                        <h1 class="centeredContent">HighScore</h1>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="offset-md-3"></div>
-                    <div class="col-md-6">
-                        <ul id="scoreList">
-
-                        </ul>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="offset-md-3"></div>
-                    <div class="col-md-6">
+                        <h1 class="titleText centeredContent">Test Yourself!</h1>
                         <div class="centeredContent">
-                            <button type="button" id="exitButton" class="btn btn-primary btn-md">Exit</button>
+                            <button type="button" id="startButton" class="btn btn-primary btn-md">Start</button>
+                            <!--Will trigger the start of the quiz.-->
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
+
+            <section>
+                <!--This is the quiz screen-->
+                <div class="row" id="quizScreen">
+                    <div class="offset-md-3"></div>
+                    <div class="col-md-6">
+                        <header>
+                            <h1 id="quizQuestion" class="titleText centeredContent">Question goes here!</h1>
+                        </header>
+                    </div>
+                    <div class="col-md-3">
+                        <h1 id="timerText">60</h1>
+                        <!--This is the timer number, it will decrease at runtime.-->
+                    </div>
+                    <div id="quizAnswers" class="col-md-12">
+                        <!--These are the quiz answers, their text is dynamically loaded into them at runtime-->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <!--Each button has a listener in js that triggers the answer function-->
+                                <button type="button" id="quizAnswer1"
+                                    class="btn btn-primary btn-lg btn-block">Answer1</button>
+                            </div>
+                            <div class="col-md-6">
+                                <button type="button" id="quizAnswer2"
+                                    class="btn btn-primary btn-lg btn-block">Answer2</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <button type="button" id="quizAnswer3"
+                                    class="btn btn-primary btn-lg btn-block">Answer3</button>
+                            </div>
+                            <div class="col-md-6">
+                                <button type="button" id="quizAnswer4"
+                                    class="btn btn-primary btn-lg btn-block">Answer4</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <!--This is the highscore screen-->
+                <div id="highScore">
+                    <div class="modalElement modal fade bd-example-modal-sm" data-backdrop="static"
+                        data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+                        aria-hidden="true">
+                        <!--This is the highscore modal-->
+                        <div class="modal-dialog modal-sm">
+                            <div class="modal-content">
+                                <form>
+                                    <div class="form-group">
+                                        <!--This is the highscore form where user inputs name and score is loaded-->
+                                        <label for="exampleInputEmail1">Your Name</label>
+                                        <input type="text" class="form-control" id="playerName"
+                                            placeholder="Enter name">
+                                        <h5 id="scoreText">Your Score - 123</h5>
+                                    </div>
+                                    <button type="submit" id="subBtn" class="btn btn-primary">Submit</button>
+                                    <!--This submits the form-->
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="offset-md-3"></div>
+                        <div class="col-md-6">
+                            <header>
+                                <!--Title of the highscore screen-->
+                                <h1 class="centeredContent">HighScore</h1>
+                            </header>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="offset-md-3"></div>
+                        <div class="col-md-6">
+                            <ul id="scoreList">
+                                <!--Dynamically created scores go here-->
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="offset-md-3"></div>
+                        <div class="col-md-6">
+                            <div class="centeredContent">
+                                <!--Exits the highscore screen and returns you to the start screen-->
+                                <button type="button" id="exitButton" class="btn btn-primary btn-md">Exit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
         </div>
     </section>
-
+    <!--All the assoicated scripts-->
     <script src="script.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"

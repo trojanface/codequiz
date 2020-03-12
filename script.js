@@ -10,31 +10,31 @@ var quizAnswers = [
     //Question 1 Answers
     "An object-oriented programming language.", "A descendant of java.",
     "A combination of html & css.", "A markup language.",
-//Question 2 Answers
+    //Question 2 Answers
     "() => { };", "function -> { }",
     "event arrowFunction { }", "(argument), => { };",
-//Question 3 Answers
+    //Question 3 Answers
     "An input box that removes control from the user.", "An input box.",
     "A prompt that offers a yes/no input.", "A box that is never late.",
-//Question 4 Answers
+    //Question 4 Answers
     "'This' refers to the object where it was called.", "The current function.",
     "A reference to the current javascript script.", "A new variable.",
-//Question 5 Answers
+    //Question 5 Answers
     "// for single line and /* for multi-line.", "<!--",
     "```", "/",
-//Question 6 Answers
+    //Question 6 Answers
     "For, while, do-while.", "For, if then, while.",
     "For each, return.", "Iterator, for, while.",
-//Question 7 Answers
+    //Question 7 Answers
     "When working with single/double quotes, apostrophes & ampersands.", "When we need to escape the current loop.",
     "To leave the vim.", "When calling the escape key.",
-//Question 8 Answers
+    //Question 8 Answers
     "<script src='script.js'></script>", "<script href='script.js'",
     "<div src='script.js'>", "<link src='script'>",
-//Question 9 Answers
+    //Question 9 Answers
     "Attaches a new element to the beginning of the array.", "Removes the first array entry.",
     "Detects when the shift key is pressed.", "Shifts an array of elements down by 1.",
-//Question 10 Answers
+    //Question 10 Answers
     "Attaches a new element to the end of the array.", "Creates a new element in the dom.",
     "Renames an array.", "Adds an element in the middle of an array."
 
@@ -71,7 +71,7 @@ subBtn.addEventListener("click", (event) => {//When the user submits the highsco
     event.preventDefault();
     $('.modalElement').modal('toggle'); //toggle off the highscore form modal
     //add the variables to the saved variables array
-    savedNames.push(playerName.value);
+    savedNames.push(playerName.value.trim());
     savedScores.push(score);
     //save the variables.
     localStorage.setItem("Names", savedNames);
@@ -80,11 +80,11 @@ subBtn.addEventListener("click", (event) => {//When the user submits the highsco
 });
 
 exitBtn.addEventListener("click", () => { //When the user exits the highscore screen hide it and reopen the start screen.
-       var child = listElement.lastElementChild;  //gets the last element in the unordered list element.
-       while (child) { //while that elements exists delete it and redeclare the child variable as the new lastchild.
-           listElement.removeChild(child); 
-           child = listElement.lastElementChild; 
-       } 
+    var child = listElement.lastElementChild;  //gets the last element in the unordered list element.
+    while (child) { //while that elements exists delete it and redeclare the child variable as the new lastchild.
+        listElement.removeChild(child);
+        child = listElement.lastElementChild;
+    }
     scoreScreen.style.display = "none";
     startScreen.style.display = "flex";
 });
@@ -93,9 +93,9 @@ startButton.addEventListener("click", () => { //The user starts the quiz
     //declare these variables as arrays.
     savedNames = new Array;
     savedScores = new Array;
-        //load the data from local storage
-        savedScores = localStorage.getItem("Highscores").split(",");
-        savedNames = localStorage.getItem("Names").split(",");
+    //load the data from local storage
+    savedScores = localStorage.getItem("Highscores").split(",");
+    savedNames = localStorage.getItem("Names").split(",");
     //hide the start screen and display the quiz screen.
     startScreen.style.display = "none";
     quizScreen.style.display = "flex";
@@ -137,7 +137,7 @@ function gettinQuizzy(questionNo) { //loads the quiz questions
     for (var i = 0; i < 40; i++) { //scramble the order of the questions so the first one isn't always right.
         var selectionOne = (currentQuestion * 4) + Math.round(Math.random() * 3);
         var selectionTwo = (currentQuestion * 4) + Math.round(Math.random() * 3);
-        if ((selectionTwo - (currentQuestion *4)) == correctAnswers[currentQuestion]) { //check if selection two has selected the correct answer, if it has then skip this iteration.
+        if ((selectionTwo - (currentQuestion * 4)) == correctAnswers[currentQuestion]) { //check if selection two has selected the correct answer, if it has then skip this iteration.
             selectionTwo = selectionOne;
         }
         if (selectionOne != selectionTwo) {
