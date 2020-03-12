@@ -7,7 +7,7 @@ This is a fun quiz designed to test your proficency with javascript concepts. It
 Not yet added
 
 # Screenshot
-[A screenshot of the quiz in progress.](./screenshot.png)
+![A screenshot of the quiz in progress.](./screenshot.png)
 
 # Credits
 HTML, CSS & JS by Matthew Teague
