@@ -69,6 +69,7 @@ var savedScores = [];
 
 subBtn.addEventListener("click", (event) => {//When the user submits the highscore form.
     event.preventDefault();
+    if (playerName.value) { //entry field validation.
     $('.modalElement').modal('toggle'); //toggle off the highscore form modal
     //add the variables to the saved variables array
     savedNames.push(playerName.value.trim());
@@ -77,6 +78,9 @@ subBtn.addEventListener("click", (event) => {//When the user submits the highsco
     localStorage.setItem("Names", savedNames);
     localStorage.setItem("Highscores", savedScores);
     scoreDisplay();
+    } else {
+        console.log("empty string");
+    }
 });
 
 exitBtn.addEventListener("click", () => { //When the user exits the highscore screen hide it and reopen the start screen.
@@ -94,12 +98,10 @@ startButton.addEventListener("click", () => { //The user starts the quiz
     savedNames = new Array;
     savedScores = new Array;
     //load the data from local storage
-    if (localStorage.getItem("Names") !== null) {
+    if (localStorage.getItem("Names") !== null) { //check if saved data exists
         console.log("splitting");
     savedScores = localStorage.getItem("Highscores").split(",");
     savedNames = localStorage.getItem("Names").split(",");
-    } else {
-        console.log("notsplitting");
     }
     //hide the start screen and display the quiz screen.
     startScreen.style.display = "none";
