@@ -94,8 +94,13 @@ startButton.addEventListener("click", () => { //The user starts the quiz
     savedNames = new Array;
     savedScores = new Array;
     //load the data from local storage
+    if (localStorage.getItem("Names") !== null) {
+        console.log("splitting");
     savedScores = localStorage.getItem("Highscores").split(",");
     savedNames = localStorage.getItem("Names").split(",");
+    } else {
+        console.log("notsplitting");
+    }
     //hide the start screen and display the quiz screen.
     startScreen.style.display = "none";
     quizScreen.style.display = "flex";
@@ -116,7 +121,7 @@ startButton.addEventListener("click", () => { //The user starts the quiz
 });
 
 function scoreDisplay() { //dynamically generate a list of user names and their scores
-    if (savedNames != null) {
+    if (savedNames !== null) {
         for (var i = 0; i < savedNames.length; i++) {
             var itemVar = document.createElement("li");
             itemVar.innerText = savedNames[i] + " : " + savedScores[i];
@@ -137,11 +142,11 @@ function gettinQuizzy(questionNo) { //loads the quiz questions
     for (var i = 0; i < 40; i++) { //scramble the order of the questions so the first one isn't always right.
         var selectionOne = (currentQuestion * 4) + Math.round(Math.random() * 3);
         var selectionTwo = (currentQuestion * 4) + Math.round(Math.random() * 3);
-        if ((selectionTwo - (currentQuestion * 4)) == correctAnswers[currentQuestion]) { //check if selection two has selected the correct answer, if it has then skip this iteration.
+        if ((selectionTwo - (currentQuestion * 4)) === correctAnswers[currentQuestion]) { //check if selection two has selected the correct answer, if it has then skip this iteration.
             selectionTwo = selectionOne;
         }
         if (selectionOne != selectionTwo) {
-            if (selectionOne - (currentQuestion * 4) == correctAnswers[currentQuestion]) { //if the correct answer is being swapped then ensure the value is being recorded correctly in the correct answer array.
+            if (selectionOne - (currentQuestion * 4) === correctAnswers[currentQuestion]) { //if the correct answer is being swapped then ensure the value is being recorded correctly in the correct answer array.
                 correctAnswers[currentQuestion] = selectionTwo - (currentQuestion * 4);
             }
 
@@ -174,7 +179,7 @@ quizA4.addEventListener("click", () => {
 });
 
 function questionAnswered(buttonNumber) {
-    if (correctAnswers[currentQuestion] == buttonNumber) { //checks if the answer is correct.
+    if (correctAnswers[currentQuestion] === buttonNumber) { //checks if the answer is correct.
         correctNum++;
     } else {
         timer -= 10;
