@@ -83,8 +83,8 @@ startButton.addEventListener("click", () => {
     savedNames = new Array;
     savedScores = new Array;
     if (savedScores.length != 0) {
-    savedScores = localStorage.getItem("Highscores").split(",");
-    savedNames = localStorage.getItem("Names").split(",");
+        savedScores = localStorage.getItem("Highscores").split(",");
+        savedNames = localStorage.getItem("Names").split(",");
     }
     startScreen.style.display = "none";
     quizScreen.style.display = "flex";
@@ -117,7 +117,29 @@ function scoreDisplay() {
     }
 }
 
+function swapElements(arrayVar, fromVar, toVar) {
+    let tempValue = arrayVar[toVar];
+    arrayVar[toVar] = arrayVar[fromVar];
+    arrayVar[fromVar] = tempValue;
+}
+
 function gettinQuizzy(questionNo) {
+    for (var i = 0; i < 40; i++) {
+        // console.log(Math.round(Math.random() * 3));
+        var selectionOne = (currentQuestion * 4) + Math.round(Math.random() * 3);
+        var selectionTwo = (currentQuestion * 4) + Math.round(Math.random() * 3);
+        if ((selectionTwo - (currentQuestion *4)) == correctAnswers[currentQuestion]) {
+            selectionTwo = selectionOne;
+        }
+        if (selectionOne != selectionTwo) {
+            if (selectionOne - (currentQuestion * 4) == correctAnswers[currentQuestion]) {
+                correctAnswers[currentQuestion] = selectionTwo - (currentQuestion * 4);
+            }
+
+            swapElements(quizAnswers, selectionOne, selectionTwo);
+        }
+    }
+    console.log(correctAnswers);
     quizDisplay.innerText = quizQuestions[questionNo];
     quizA1.innerText = quizAnswers[questionNo * 4];
     quizA2.innerText = quizAnswers[questionNo * 4 + 1];
@@ -161,7 +183,8 @@ function questionCycle() {
             score = 0;
         }
         scoreText.innerText = "Your Score - " + score;
-        $('.modalElement').modal('toggle');
+
+        $(".modalElement").modal("toggle");
         console.log("display score");
         quizScreen.style.display = "none";
         scoreScreen.style.display = "block";
