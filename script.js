@@ -110,7 +110,7 @@ startButton.addEventListener("click", () => { //The user starts the quiz
     score = 0;
     currentQuestion = 0;
     var timerFunc = setInterval(function () { //start the timer
-        if (timer > 0 && (currentQuestion < correctAnswers.length - 1)) {
+        if (timer > 0 && (currentQuestion < correctAnswers.length)) {
             timer--;
             timerElement.innerText = timer;
         } else {
